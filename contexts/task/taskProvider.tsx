@@ -1,14 +1,18 @@
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { TaskContext } from "@/contexts/task/taskContext";
 import { TaskData } from "@/types/task";
 
 export default function TaskProvider({ children }: { children: ReactNode }) {
-  const [task, setTask] = useState<TaskData[]>(() => {
-    const newTask = localStorage.getItem("task") || "[]";
-    return JSON.parse(newTask) as TaskData[];
-  });
+  const [task, setTask] = useState<TaskData[]>([]);
+
+  useEffect(() => {
+    if (typeof localStorage !== "undefined") {
+      const storedTask = localStorage.getItem("task") || "[]";
+      setTask(JSON.parse(storedTask) as TaskData[]);
+    }
+  }, []);
 
   const handleAddToDo = (task: string) => {
     setTask((prev: TaskData[]) => {

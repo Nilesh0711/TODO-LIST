@@ -17,7 +17,7 @@ export default function SingleTask({ task }: SingleTaskProp) {
           onChange={() => toggleTaskComplete(task.id)}
         />
         {!task.completed && (
-          <div className="text-xl mr-24 text-center m-auto w-4/5">{task.task}</div>
+          <div className="text-xl text-center m-auto w-4/5">{task.task}</div>
         )}
         {task.completed && (
           <div className="line-through text-xl text-center m-auto w-4/5">

@@ -27,15 +27,15 @@ export default function ShowTask() {
   return (
     <div className="w-full">
       <Navbar />
-      {filterTask.map((e: TaskData) => {
-        return (
-          <>
-            <li className="list-none" key={e.id}>
+      <li className="list-none">
+        {filterTask.map((e: TaskData) => {
+          return (
+            <ul key={e.id}>
               <SingleTask task={e} />
-            </li>
-          </>
-        );
-      })}
+            </ul>
+          );
+        })}
+      </li>
     </div>
   );
 }
